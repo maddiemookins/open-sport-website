@@ -1,6 +1,6 @@
 # Open Sport website
 
-Initial **Brand Concept 1** and largely static public website for Open Sport.
+Static website for the proposed Open Sport Foundation. The homepage includes a founding-charter summary for consultation.
 
 **Tagline:** Sport belongs to everyone.  
 **Campaign line:** More playing. More belonging. More celebrating.
@@ -12,9 +12,7 @@ An accessible UK-first home for Open Sport's mission, its ambition of one millio
 Open `index.html` locally in a browser. There is no package installation or build step.
 
 ## Design
-- Deep forest green `#102b24`
-- Lime green `#c7f464`
-- Warm off-white `#f5f4ed`
+- Bold purple `#6A0DAD`, pale lilac `#E7D9FF` and warm off-white `#F9F5F2`
 - Strong typographic hierarchy and community-focused language
 - Mobile-responsive layout
 
@@ -28,7 +26,7 @@ The website is separate from the future interactive player platform monorepo and
 
 ## Next steps
 - Review visual identity, typography, logo and imagery.
-- Decide domain and hosting.
+- Review and approve the Cloudflare Pages launch for `opensportfoundation.org`.
 - Add real progress updates and an approved contact address.
 - Establish accessible privacy and safeguarding information before soliciting registrations.
 
@@ -50,3 +48,11 @@ The public player app uses a separate origin, which retains its own device-local
 **Testing:** run `node scripts/check-demo-embed.mjs` with Node 20+ to validate stable URL, accessible iframe, fallback links and responsive markup. Review the iframe on desktop and mobile in a real browser. This static source check is separate from the player's Playwright acceptance suite.
 
 **Approval boundary:** this feature branch is a website change for review, not a request to deploy the website or introduce external services. The public player-demo URL remains independently deployed and updated through its existing gated release process.
+
+## Cloudflare Pages launch plan
+
+After launch approval, connect this website repository to its own Cloudflare Pages project. Use `main` as the production branch, framework preset None, no build command, and `.` as the output directory. Review branch preview settings before enabling automatic deployments. Keep the player app on its existing separate project.
+
+In that Pages project, add `opensportfoundation.org` under Custom domains. Use the Cloudflare zone for the apex and let Pages configure the record. Check the active domain and HTTPS before announcing the site. Follow the [Cloudflare Pages custom domain guide](https://developers.cloudflare.com/pages/configuration/custom-domains/).
+
+Before launch, verify that the canonical demo opens without login, shows only fictional data and works in the iframe from the foundation domain on mobile and desktop. Keep the direct demo link visible. If framing is blocked, review the demo deployment's response headers and allow the exact foundation origin before enabling the iframe publicly.
