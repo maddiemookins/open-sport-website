@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+
+const html=readFileSync(new URL('../index.html',import.meta.url),'utf8');
+const css=readFileSync(new URL('../styles.css',import.meta.url),'utf8');
+const canonical='https://open-sport-app.pages.dev/';
+const embeds=[...html.matchAll(/<iframe\b[^>]*>/gi)];
+assert.equal(embeds.length,1,'Website must provide one clear interactive demo embed');
+const embed=embeds[0][0];
+assert.ok(embed.includes('src="'+canonical+'"'),'Embed must target the stable canonical app deployment');
+assert.ok(/title="[^"]{15,}"/.test(embed),'Demo iframe requires a descriptive accessible title');
+assert.ok(embed.includes('loading="lazy"'),'Defer loading until the demo is near the viewport');
+assert.ok(html.includes('id="try-demo"'),'Demo showcase needs a stable navigation anchor');
+assert.ok(html.includes('href="#try-demo"'),'Hero and navigation must link to the embedded demo');
+assert.ok((html.match(new RegExp(canonical.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'g'))??[]).length>=2,
+ 'Offer a direct URL if third-party iframe embedding is blocked');
+assert.ok(/target="_blank" rel="noopener noreferrer"/.test(html),'Full-page demo link must avoid opener exposure');
+assert.ok(css.includes('.demo-frame')&&css.includes('@media(max-width:600px)'),
+ 'Embedded demo needs mobile-responsive styling');
+assert.ok(/Fictional/i.test(html),'Describe sample player data as fictional');
+console.log('Static website and evergreen demo integration checks passed');
