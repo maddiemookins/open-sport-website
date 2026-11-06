@@ -11,7 +11,7 @@
     if(event.origin!==trustedOrigin||event.source!==frame.contentWindow)return;
     const data=event.data;
     if(!data||data.type!=='OPEN_SPORT_DEMO_VERSION'||typeof data.version!=='string')return;
-    if(!/^\\d+\\.\\d+\\.\\d+$/.test(data.version))return;
+    if(!/^[0-9]+[.][0-9]+[.][0-9]+$/.test(data.version))return;
     status.textContent='LIVE APP · VERSION '+data.version;
   });
   frame.addEventListener('load',function(){
