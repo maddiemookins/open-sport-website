@@ -11,7 +11,7 @@ assert.ok(embed.includes('src="'+canonical+'"'),'Embed must target the stable ca
 assert.ok(/title="[^"]{15,}"/.test(embed),'Demo iframe requires a descriptive accessible title');
 assert.ok(embed.includes('loading="lazy"'),'Defer loading until the demo is near the viewport');
 assert.ok(html.includes('id="try-demo"'),'Demo showcase needs a stable navigation anchor');
-assert.ok(html.includes('href="#try-demo"'),'Hero and navigation must link to the embedded demo');
+assert.ok(html.includes('href="demo.html"'),'Hero and navigation must link to the dedicated demo page');
 assert.ok((html.match(new RegExp(canonical.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'g'))??[]).length>=2,
  'Offer a direct URL if third-party iframe embedding is blocked');
 assert.ok(/target="_blank" rel="noopener noreferrer"/.test(html),'Full-page demo link must avoid opener exposure');
