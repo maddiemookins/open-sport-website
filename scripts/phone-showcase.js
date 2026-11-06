@@ -1,6 +1,7 @@
-/* Homepage feature carousel. Genuine app screens load on demand from the
- * canonical app URL, rather than a separately maintained screenshot/mock app.
- * Auto-advancement pauses for reduced motion, interaction, and when offscreen.
+/* Homepage carousel uses snapshots captured from the actual fictional app.
+ * Screenshot bytes live on this website, so cross-origin Cloudflare Access or
+ * iframe clickjacking protection cannot leave the phone screens empty.
+ * This is illustrative only; full functionality lives behind Try the Demo.
  */
 (function(){
  'use strict';
@@ -12,45 +13,14 @@
  const previous=carousel.querySelector('[data-showcase-prev]');
  const next=carousel.querySelector('[data-showcase-next]');
  if(!track||slides.length!==dots.length||!previous||!next)return;
- // Website branch previews show the tested app branch preview. Production
- // domains ALWAYS use the canonical published application origin.
- const previewHost=window.location.hostname.endsWith('.open-sport-website.pages.dev')&&
-  window.location.hostname!=='open-sport-website.pages.dev';
- const previewAppOrigin='https://feat-demo-showcase-deep-link.open-sport-app.pages.dev';
- const allowedAppOrigin=previewHost?previewAppOrigin:'https://open-sport-app.pages.dev';
- const versionBadge=carousel.querySelector('[data-showcase-version]');
- window.addEventListener('message',(event)=>{
-  if(event.origin!==allowedAppOrigin)return;
-  const fromCarousel=slides.some(slide=>slide.querySelector('iframe')?.contentWindow===event.source);
-  if(!fromCarousel)return;
-  const data=event.data;
-  if(!data||data.type!=='OPEN_SPORT_DEMO_VERSION'||typeof data.version!=='string')return;
-  if(!/^[0-9]+[.][0-9]+[.][0-9]+$/.test(data.version))return;
-  if(versionBadge)versionBadge.textContent='REAL APP · v'+data.version;
- });
  const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
  let index=0;
  let hovering=false,focused=false,visible=false,swipeStartX=null,lastGesture=0;
- const loadSlide=(n)=>{
-  const frame=slides[n]?.querySelector('iframe[data-src]');
-  if(!frame||frame.getAttribute('src'))return;
-  const raw=frame.getAttribute('data-src');
-  try{
-   const url=new URL(raw);
-   if(url.origin!=='https://open-sport-app.pages.dev')return;
-   if(previewHost)url.host=new URL(allowedAppOrigin).host;
-   if(!['home','fixtures','calendar','team','profile'].includes(url.searchParams.get('view')))return;
-   frame.src=url.href;
-  }catch{/* Never navigate to untrusted carousel content. */}
- };
  const show=(n,byUser=false)=>{
   index=(n+slides.length)%slides.length;
   track.style.transform='translateX(-'+(index*100)+'%)';
   slides.forEach((slide,i)=>slide.setAttribute('aria-hidden',String(i!==index)));
   dots.forEach((dot,i)=>dot.setAttribute('aria-pressed',String(i===index)));
-  loadSlide(index);
-  // Preloading the next phone keeps forward swipes responsive.
-  loadSlide((index+1)%slides.length);
   if(byUser)lastGesture=Date.now();
  };
  const paused=()=>prefersReducedMotion.matches||document.hidden||!visible||
@@ -77,10 +47,7 @@
  },{passive:true});
  carousel.addEventListener('pointercancel',()=>{swipeStartX=null;});
  if('IntersectionObserver' in window){
-  const observer=new IntersectionObserver(entries=>{
-   visible=entries.some(entry=>entry.isIntersecting);
-   if(visible)loadSlide(index);
-  },{threshold:.15});
+  const observer=new IntersectionObserver(entries=>{visible=entries.some(entry=>entry.isIntersecting);},{threshold:.15});
   observer.observe(carousel);
  }else{visible=true;}
  show(0);
