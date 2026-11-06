@@ -20,8 +20,3 @@ jobs:
           node-version: '22'
       - run: node scripts/check-demo-embed.mjs
       - run: node scripts/check-progress-pages.mjs
-      - name: Inspect app frame response for homepage preview
-        run: |
-          curl --fail --location --silent --show-error --head 'https://feat-demo-showcase-deep-link.open-sport-app.pages.dev/?view=home' | head -35
-          curl --fail --location --silent --show-error --head 'https://open-sport-app.pages.dev/?view=home' | head -35
-
