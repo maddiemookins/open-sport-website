@@ -50,3 +50,16 @@ a:focus-visible{outline-color:#8A3FFC}
 .demo-fallback a:focus-visible{outline:3px solid #8A3FFC;outline-offset:3px}
 @media(max-width:900px){.demo-intro{grid-template-columns:1fr;gap:22px}.demo-frame{height:680px;min-height:500px}}
 @media(max-width:600px){.demo-showcase{padding:65px 0}.demo-intro p{font-size:15px}.demo-frame-toolbar{padding:12px;gap:9px}.demo-frame-toolbar strong{font-size:11px}.demo-frame-toolbar>span{font-size:9px}.demo-frame{height:610px;min-height:450px}.demo-browser-dot i{width:7px;height:7px}}
+
+/* Inclusion and cross-sport platform vision */
+.inclusion-section{background:#f5edff}
+.inclusion-section strong{color:#571385}
+.sporting-bodies{background:#faf7ff}
+.sporting-bodies .section-grid{margin-bottom:36px}
+.capability-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.capability-grid article{background:#fff;border:1px solid #e6d7f0;border-radius:12px;padding:24px;box-shadow:0 5px 18px #3511480a}
+.capability-grid h3{font-size:20px;margin:0 0 10px;letter-spacing:-.03em}
+.capability-grid p{font-size:15px;line-height:1.65;color:#62576b;margin:0}
+.roadmap-note{font-size:14px;line-height:1.65;color:#655675;margin:25px 0 0}
+@media(max-width:1050px){.capability-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.capability-grid{grid-template-columns:1fr}.capability-grid article{padding:22px}}
