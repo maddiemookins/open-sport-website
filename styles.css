@@ -121,3 +121,110 @@ a:focus-visible{outline-color:#8A3FFC}
 .contact-policy p{line-height:1.75;color:#574b61}
 @media(max-width:950px){.roadmap-columns{grid-template-columns:1fr}.roadmap-columns article{padding:24px}}
 @media(max-width:600px){.progress-table th,.progress-table td{padding:13px 14px}.progress-table{font-size:14px}.contact-policy{padding:20px}}
+
+
+/* November 2026 photo-led, editorial brand exploration. Homepage emphasises navigation over scrolling. */
+.site-header .nav{min-height:76px}
+.site-header .nav nav{gap:clamp(9px,1.4vw,23px);font-size:13px;flex-wrap:wrap;justify-content:flex-end}
+.site-header .brand{font-weight:950}
+.compact-hero{background:#f0e5ff;overflow:hidden}
+.compact-hero-grid{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:36px;align-items:center;padding:37px 0}
+.compact-hero-copy{padding:12px 0}
+.compact-hero-copy .eyebrow{font-size:11px}
+.compact-hero h1,.mini-page-hero h1{font-size:clamp(43px,5.3vw,79px);line-height:1.04;letter-spacing:-.06em;margin:14px 0 18px;font-family:Poppins,Inter,system-ui,sans-serif}
+.compact-hero h1 em,.mini-page-hero h1 em{color:#7d28c4;font-style:normal}
+.compact-hero .intro{font-size:clamp(15px,1.45vw,19px);line-height:1.6;max-width:580px}
+.compact-hero .actions{margin:22px 0 15px}
+.hero-micro{font-size:12px;color:#5b4b66;font-weight:650;line-height:1.5;margin:0}
+.hero-photograph{position:relative;margin:0;min-width:0;aspect-ratio:1.35;overflow:hidden;border-radius:22px 22px 22px 5px;box-shadow:13px 14px 0 #d7b8ef;background:linear-gradient(120deg,#592078,#baa0d8)}
+.hero-photograph img,.gallery-grid img{display:block;width:100%;height:100%;object-fit:cover}
+.hero-photograph figcaption{position:absolute;left:0;bottom:0;right:0;padding:25px 24px 19px;background:linear-gradient(transparent,#25112fcc);color:white;display:grid;gap:2px}
+.hero-photograph figcaption strong{font-weight:900;font-size:15px;letter-spacing:.045em}
+.hero-photograph figcaption span{font-size:12px}
+.compact-sports{padding:31px 0 32px;background:#fff}
+.compact-section-heading{display:flex;justify-content:space-between;align-items:end;gap:22px;margin-bottom:19px}
+.compact-section-heading .kicker{margin:0 0 5px;font-size:10px}
+.compact-section-heading h2{font-size:clamp(26px,2.8vw,38px);margin:0}
+.compact-section-heading p:not(.kicker){max-width:340px;font-size:14px;line-height:1.5;color:#6c596f;margin:0}
+.compact-section-heading .inline-link{font-size:13px;font-weight:800;white-space:nowrap;color:#69109a}
+.sport-icon-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px}
+.sport-icon-grid a{min-width:0;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:14px 6px 13px;border:1px solid #e4d7ee;border-radius:13px;background:#fcf9ff;transition:transform .16s,box-shadow .16s}
+.sport-icon-grid a:hover{transform:translateY(-3px);box-shadow:0 7px 17px #4514751c}
+.sport-icon-grid span{width:43px;height:43px;display:grid;place-items:center;background:#f0e3ff;border-radius:13px;font-size:25px;color:#6a0dad;font-weight:900}
+.sport-icon-grid strong{font-size:12px}
+.compact-journeys{padding:35px 0 39px;background:#f8f3ff}
+.audience-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.audience-cards>a,.audience-cards>article{display:block;border:1px solid #e7dbed;border-radius:15px;padding:23px;background:#fff;color:#25112f;min-width:0}
+.audience-cards>a:hover{border-color:#8134c5;box-shadow:0 12px 25px #49115e14}
+.audience-index{font-size:10px;font-weight:900;letter-spacing:.12em;color:#761db2}
+.audience-cards h3{font-size:24px;margin:12px 0 8px;letter-spacing:-.035em}
+.audience-cards p{font-size:14px;line-height:1.6;color:#605469;min-height:65px}
+.audience-cards strong{font-size:13px;color:#69109a}
+.compact-gallery{padding:24px 0;background:#fff}
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr .8fr;gap:15px}
+.gallery-grid figure{position:relative;margin:0;height:200px;background:#d6bcf4;border-radius:13px;overflow:hidden}
+.gallery-grid figcaption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,#25112fb9);color:white;padding:28px 15px 12px;font-weight:800;font-size:14px}
+.gallery-callout{border-radius:13px;background:#38104f;color:#fff;padding:17px 20px;display:flex;flex-direction:column;justify-content:center}
+.gallery-callout .eyebrow{color:#d8bafa;font-size:9px;margin:0 0 7px}
+.gallery-callout strong{font-size:clamp(28px,3.2vw,44px);letter-spacing:-.065em}
+.gallery-callout p{font-size:14px;line-height:1.3;margin:0 0 13px}
+.gallery-callout a{font-size:12px;font-weight:800;text-decoration:underline;text-underline-offset:4px}
+.compact-bottom{background:#eee0fb;padding:33px 0}
+.compact-bottom-inner{display:flex;align-items:center;justify-content:space-between;gap:27px}
+.compact-bottom-inner .kicker{font-size:10px;margin:0 0 7px}
+.compact-bottom h2{font-size:clamp(26px,3vw,38px);margin:0 0 7px}
+.compact-bottom p:not(.kicker){font-size:14px;color:#5e5068;line-height:1.55;max-width:640px;margin:0}
+.compact-bottom .actions{margin:0;flex-shrink:0}
+.photo-credits{font-size:11px;color:#6e6575;padding:0 0 24px}
+.photo-credits a,.footer a:not(.brand){text-decoration:underline;text-underline-offset:3px}
+.mini-page-hero{padding:52px 0;background:#f0e5ff}
+.mini-page-hero h1{font-size:clamp(42px,5vw,68px)}
+.mini-page-hero p:not(.eyebrow){font-size:18px;line-height:1.65;max-width:780px}
+.mini-page-hero .actions{margin:22px 0 0}
+.compact-catalogue,.league-use-cases,.compact-league{padding:56px 0}
+.compact-catalogue h2,.league-use-cases h2,.compact-league h2{font-size:clamp(30px,4vw,51px)}
+.sport-catalogue{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-top:25px}
+.sport-catalogue article{border-radius:14px;border:1px solid #e4d5ef;background:#fff;padding:22px}
+.sport-catalogue article>span{font-size:33px;color:#6a0dad;font-weight:900}
+.sport-catalogue h3{font-size:20px;margin:13px 0 7px}
+.sport-catalogue p{font-size:13px;line-height:1.55;color:#5e5763;min-height:62px}
+.sport-catalogue small{font-weight:850;color:#7027a8;font-size:10px;letter-spacing:.09em}
+.compact-league{background:#f8f2ff}
+.league-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:28px 0}
+.league-steps article{background:#fff;border-radius:13px;padding:24px;border:1px solid #e8d8ef}
+.league-steps article>span{font-size:26px;font-weight:950;color:#7d29bd}
+.league-steps h3{font-size:19px;margin:12px 0 8px}
+.league-steps p{color:#64596a;font-size:14px;line-height:1.6}
+.league-note{background:#efe0ff;border-left:5px solid #6a0dad;border-radius:8px;padding:20px 25px}
+.league-note h3{margin:0 0 9px}.league-note p{margin:0;line-height:1.7;font-size:14px}
+@media(max-width:1050px){
+ .compact-hero-grid{grid-template-columns:1fr 1fr;gap:23px}
+ .sport-icon-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .sport-catalogue,.league-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .gallery-grid{grid-template-columns:1fr 1fr}
+ .gallery-callout{grid-column:1/-1}
+}
+@media(max-width:720px){
+ .compact-hero-grid{grid-template-columns:1fr;padding:30px 0 36px}
+ .compact-hero h1{font-size:clamp(40px,10vw,62px)}
+ .hero-photograph{aspect-ratio:1.5;box-shadow:8px 8px 0 #d7b8ef}
+ .compact-section-heading{flex-direction:column;align-items:flex-start;gap:9px}
+ .audience-cards{grid-template-columns:1fr}
+ .audience-cards p{min-height:0}
+ .sport-icon-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+ .sport-icon-grid a{padding:10px 3px}
+ .sport-icon-grid strong{font-size:10px}
+ .sport-icon-grid span{width:37px;height:37px;font-size:23px}
+ .gallery-grid{grid-template-columns:1fr 1fr;gap:8px}
+ .gallery-grid figure{height:155px}
+ .compact-bottom-inner{align-items:flex-start;flex-direction:column}
+ .mini-page-hero{padding:36px 0}.mini-page-hero p:not(.eyebrow){font-size:16px}
+ .sport-catalogue,.league-steps{grid-template-columns:1fr 1fr;gap:10px}
+ .sport-catalogue article,.league-steps article{padding:16px}
+ .sport-catalogue p{min-height:0}
+}
+@media(max-width:450px){
+ .sport-catalogue,.league-steps{grid-template-columns:1fr}
+ .gallery-grid figure{height:132px}
+}
+@media(prefers-reduced-motion:reduce){.sport-icon-grid a{transition:none}}
