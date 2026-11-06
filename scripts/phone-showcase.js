@@ -12,6 +12,12 @@
  const previous=carousel.querySelector('[data-showcase-prev]');
  const next=carousel.querySelector('[data-showcase-next]');
  if(!track||slides.length!==dots.length||!previous||!next)return;
+ // Website branch previews show the tested app branch preview. Production
+ // domains ALWAYS use the canonical published application origin.
+ const previewHost=window.location.hostname.endsWith('.open-sport-website.pages.dev')&&
+  window.location.hostname!=='open-sport-website.pages.dev';
+ const previewAppOrigin='https://feat-demo-showcase-deep-link.open-sport-app.pages.dev';
+ const allowedAppOrigin=previewHost?previewAppOrigin:'https://open-sport-app.pages.dev';
  const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
  let index=0;
  let hovering=false,focused=false,visible=false,swipeStartX=null,lastGesture=0;
@@ -22,6 +28,7 @@
   try{
    const url=new URL(raw);
    if(url.origin!=='https://open-sport-app.pages.dev')return;
+   if(previewHost)url.host=new URL(allowedAppOrigin).host;
    if(!['home','fixtures','calendar','team','profile'].includes(url.searchParams.get('view')))return;
    frame.src=url.href;
   }catch{/* Never navigate to untrusted carousel content. */}
