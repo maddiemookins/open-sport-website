@@ -1,13 +1,14 @@
 import {readFileSync} from 'node:fs';
 import assert from 'node:assert/strict';
 const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
-const pages=['index.html','sports.html','sporting-bodies.html','platform.html','charter.html','demo.html','progress.html','contact.html'];
+const pages=['index.html','sports.html','sporting-bodies.html','platform.html','charter.html','demo.html','progress.html','contact.html','login.html'];
 const progress=read('progress.html'), contact=read('contact.html'), styles=read('styles.css');
 for(const page of pages){
  const html=read(page);
  assert.match(html,/<main id="main">/,'landmark on '+page);
  assert.match(html,/href="progress.html"/,'progress navigation on '+page);
  assert.match(html,/href="contact.html"/,'contact navigation on '+page);
+ assert.match(html,/href="login.html"/,'login navigation on '+page);
  assert.match(html,/href="sports.html"/,'sport navigation on '+page);
  assert.match(html,/href="sporting-bodies.html"/,'sporting-body navigation on '+page);
  assert.match(html,/<nav aria-label="Main navigation">/,'navigation on '+page);
@@ -28,12 +29,12 @@ assert.match(styles,/\.roadmap-columns/);
 console.log('Website progress, contact, navigation and privacy checks passed.');
 
 const home=read('index.html'),sports=read('sports.html'),bodies=read('sporting-bodies.html');
-assert.match(home,/class="hero-photograph"/);
-assert.match(home,/src="https:\/\/images.unsplash.com\/photo-/);
-assert.match(home,/alt="Women playing field hockey/);
+assert.match(home,/class="hero-phone-showcase"/,'Homepage prominently showcases genuine app screens in a phone');
+assert.match(styles,/\.showcase-photo-backdrop/,'Photo-led hero retained as background');
+assert.match(home,/class="showcase-phone"/,'Phone mockup frames genuine app screens');
 assert.match(home,/Photography:/);
 assert.match(home,/href="demo.html"/);
-assert.doesNotMatch(home,/<iframe/,'Homepage stays short: interactive demo is on its own page.');
+assert.match(home,/src="showcase\/fixtures.jpg"/,'Carousel renders a real app screenshot');
 for(const sport of ['hockey','football','netball','rugby','basketball','cricket','volleyball']) {
  assert.match(sports,new RegExp('id="'+sport+'"'),'Sport directory includes '+sport);
 }
@@ -41,3 +42,44 @@ for(const concept of ['promotion/relegation','forfeits','appeals','audit trail',
  assert.ok(bodies.toLowerCase().includes(concept.toLowerCase()),concept);
 }
 console.log('Photo-led multisport and league navigation checks passed.');
+
+const landing=read('index.html'),login=read('login.html'),terms=read('terms.html'),privacy=read('privacy.html');
+assert.match(landing,/home-app-button/,'First page visibly launches the app');
+assert.match(landing,/href="demo.html">🏑 OPEN THE APP DEMO/);
+assert.match(landing,/COMING SOON ON THE/,'Apple Store marked coming soon');
+assert.match(landing,/COMING SOON ON/,'Google Play marked coming soon');
+assert.match(landing,/App Store/);assert.match(landing,/Google Play/);
+assert.match(login,/https:\/\/open-sport-app.pages.dev\/\?view=account/,'Login routes to canonical app');
+assert.match(login,/disabled aria-label="Continue with Google/,'Unconfigured Google sign-in is disabled');
+assert.match(login,/href="terms.html"/);assert.match(login,/href="privacy.html"/);
+assert.match(terms,/NOT IN EFFECT/);assert.match(privacy,/NOT IN EFFECT/);
+assert.doesNotMatch(login,/<form\b/,'Website cannot intercept real login credentials');
+console.log('App launch, store coming-soon and safe sign-in gateway checks passed');
+
+const featureJs=read('scripts/phone-showcase.js');
+const snapshotManifest=JSON.parse(read('showcase/manifest.json'));
+assert.equal(snapshotManifest.version,'0.5.6','Snapshot manifest identifies tested source app version');
+assert.match(snapshotManifest.source_commit,/^[a-f0-9]{40}$/,'Snapshots must be traceable to a real app build');
+assert.equal(snapshotManifest.fictional_data_only,true,'Screenshots contain fictional test data only');
+for(const view of ['home','fixtures','calendar','team','profile']){
+ assert.match(home,new RegExp('data-app-view="'+view+'"'),'Feature carousel includes '+view);
+ assert.match(home,new RegExp('src="showcase/'+view+'[.]jpg"'),'Carousel must show a local screenshot for '+view);
+ const jpg=readFileSync(new URL('../showcase/'+view+'.jpg',import.meta.url));
+ assert.ok(jpg.length>12000,'Screenshot must be nonempty: '+view);
+ assert.equal(jpg[0],0xff,'JPEG magic first byte '+view);
+ assert.equal(jpg[1],0xd8,'JPEG magic second byte '+view);
+ assert.equal(jpg[jpg.length-2],0xff,'JPEG end marker first byte '+view);
+ assert.equal(jpg[jpg.length-1],0xd9,'JPEG end marker last byte '+view);
+}
+assert.equal((home.match(/class="showcase-slide"/g)||[]).length,5,'Five feature slides');
+assert.doesNotMatch(home,/<iframe/,'Homepage screenshot carousel must not depend on Cloudflare Access or cross-origin iframes');
+assert.match(featureJs,/prefers-reduced-motion/,'Carousel respects motion preferences');
+assert.match(featureJs,/document.hidden/,'Carousel stops in background tabs');
+assert.match(featureJs,/focusin/,'Carousel pauses during keyboard interaction');
+assert.match(featureJs,/mouseenter/,'Carousel pauses when hovered');
+assert.match(featureJs,/pointerup/,'Mobile touch swipe works');
+assert.match(featureJs,/new IntersectionObserver/,'Carousel avoids offscreen automatic animation');
+assert.match(home,/data-showcase-version/,'Homepage identifies version of its local screenshots');
+assert.match(home,/APP SCREENSHOTS · v0[.]5[.]6/,'Label screenshot version honestly');
+assert.match(styles,/showcase-snapshot/,'CSS displays screenshot imagery within the phone');
+console.log('Five genuine app screenshots, source traceability, swipe and accessibility checks passed');
