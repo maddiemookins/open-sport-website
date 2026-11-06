@@ -13,7 +13,7 @@ for(const page of pages){
 assert.match(progress,/<time datetime="2026-11-06">/);
 assert.match(progress,/Demo implemented/);
 assert.match(progress,/TEST infrastructure/);
-assert.match(progress,/Needs attention/);
+assert.match(progress,/CI passing/);
 for(const text of ['Full Open Sport roadmap','Technology roadmap','OSF roadmap','to be defined'])assert.ok(progress.includes(text),text);
 assert.match(progress,/<th scope="col">/);
 assert.match(progress,/<th scope="row">/);
