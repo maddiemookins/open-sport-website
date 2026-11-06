@@ -34,7 +34,7 @@ assert.match(styles,/\.showcase-photo-backdrop/,'Photo-led hero retained as back
 assert.match(home,/class="showcase-phone"/,'Phone mockup frames genuine app screens');
 assert.match(home,/Photography:/);
 assert.match(home,/href="demo.html"/);
-assert.match(home,/data-src="https:\/\/open-sport-app.pages.dev\/\?view=fixtures"/,'Carousel renders exact app feature routes');
+assert.match(home,/src="showcase\/fixtures.jpg"/,'Carousel renders a real app screenshot');
 for(const sport of ['hockey','football','netball','rugby','basketball','cricket','volleyball']) {
  assert.match(sports,new RegExp('id="'+sport+'"'),'Sport directory includes '+sport);
 }
@@ -57,33 +57,29 @@ assert.doesNotMatch(login,/<form\b/,'Website cannot intercept real login credent
 console.log('App launch, store coming-soon and safe sign-in gateway checks passed');
 
 const featureJs=read('scripts/phone-showcase.js');
+const snapshotManifest=JSON.parse(read('showcase/manifest.json'));
+assert.equal(snapshotManifest.version,'0.5.6','Snapshot manifest identifies tested source app version');
+assert.match(snapshotManifest.source_commit,/^[a-f0-9]{40}$/,'Snapshots must be traceable to a real app build');
+assert.equal(snapshotManifest.fictional_data_only,true,'Screenshots contain fictional test data only');
 for(const view of ['home','fixtures','calendar','team','profile']){
  assert.match(home,new RegExp('data-app-view="'+view+'"'),'Feature carousel includes '+view);
- assert.match(home,new RegExp('data-src="https://open-sport-app[.]pages[.]dev/[?]view='+view+'"'),
-  'Carousel must use canonical app for '+view);
+ assert.match(home,new RegExp('src="showcase/'+view+'[.]jpg"'),'Carousel must show a local screenshot for '+view);
+ const jpg=readFileSync(new URL('../showcase/'+view+'.jpg',import.meta.url));
+ assert.ok(jpg.length>12000,'Screenshot must be nonempty: '+view);
+ assert.equal(jpg[0],0xff,'JPEG magic first byte '+view);
+ assert.equal(jpg[1],0xd8,'JPEG magic second byte '+view);
+ assert.equal(jpg[jpg.length-2],0xff,'JPEG end marker first byte '+view);
+ assert.equal(jpg[jpg.length-1],0xd9,'JPEG end marker last byte '+view);
 }
-assert.equal((home.match(/class="showcase-slide"/g)||[]).length,5,'Five concise feature slides');
+assert.equal((home.match(/class="showcase-slide"/g)||[]).length,5,'Five feature slides');
+assert.doesNotMatch(home,/<iframe/,'Homepage screenshot carousel must not depend on Cloudflare Access or cross-origin iframes');
 assert.match(featureJs,/prefers-reduced-motion/,'Carousel respects motion preferences');
 assert.match(featureJs,/document.hidden/,'Carousel stops in background tabs');
 assert.match(featureJs,/focusin/,'Carousel pauses during keyboard interaction');
 assert.match(featureJs,/mouseenter/,'Carousel pauses when hovered');
 assert.match(featureJs,/pointerup/,'Mobile touch swipe works');
-assert.match(featureJs,/new IntersectionObserver/,'Carousel should avoid offscreen automatic animation');
-assert.match(featureJs,/url.origin!=='https:\/\/open-sport-app.pages.dev'/,
- 'Only the canonical app is allowed to load into phone iframes');
-console.log('Live phone carousel and five app-feature views verified');
-
-assert.match(featureJs,/window\.location\.hostname\.endsWith\('\.open-sport-website\.pages\.dev'\)/,
- 'Only website Pages branch previews can use app preview build');
-assert.match(featureJs,/previewHost\?previewAppOrigin:'https:\/\/open-sport-app.pages.dev'/,
- 'Production website must always run the canonical app');
-assert.match(featureJs,/feat-demo-showcase-deep-link\.open-sport-app\.pages\.dev/,
- 'Branch showcase pairs with the tested app preview build');
-console.log('Preview-to-preview pairing and production isolation verified');
-
-assert.match(home,/data-showcase-version/,'Showcase version badge derives from real embedded app');
-assert.match(featureJs,/event.origin!==allowedAppOrigin/,'Reject messages from unrelated origins');
-assert.match(featureJs,/event.source/,'Verify message belongs to one embedded phone view');
-assert.match(featureJs,/OPEN_SPORT_DEMO_VERSION/,'Version contract uses same app event as demo page');
-assert.match(featureJs,/versionBadge.textContent='REAL APP/,'Report the actual embedded app version');
-console.log('Homepage carousel app-version handshake verified');
+assert.match(featureJs,/new IntersectionObserver/,'Carousel avoids offscreen automatic animation');
+assert.match(home,/data-showcase-version/,'Homepage identifies version of its local screenshots');
+assert.match(home,/APP SCREENSHOTS · v0[.]5[.]6/,'Label screenshot version honestly');
+assert.match(styles,/showcase-snapshot/,'CSS displays screenshot imagery within the phone');
+console.log('Five genuine app screenshots, source traceability, swipe and accessibility checks passed');
