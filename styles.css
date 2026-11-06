@@ -228,3 +228,46 @@ a:focus-visible{outline-color:#8A3FFC}
  .gallery-grid figure{height:132px}
 }
 @media(prefers-reduced-motion:reduce){.sport-icon-grid a{transition:none}}
+
+
+/* Open the app without scrolling: primary launch button and honest app-store teasers. */
+.home-app-launch{margin:18px 0 12px;padding:17px 20px;background:#fff;border-radius:16px;border:2px solid #6a0dad;box-shadow:0 12px 28px #3b005716;max-width:590px}
+.home-app-kicker{font-size:11px;font-weight:900;letter-spacing:.11em;color:#5a1486}
+.home-app-launch .actions{margin:10px 0!important;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.home-app-button{font-size:15px!important;padding:14px 19px!important;box-shadow:0 6px 18px #6a0dad20}
+.home-app-launch>p{font-size:13px;color:#62546a;line-height:1.5;margin:0 0 11px}
+.home-charter-link{display:inline-block;margin:10px 0;font-size:13px;font-weight:750;text-decoration:underline;text-underline-offset:3px;color:#5b187a}
+.store-badges{display:flex;flex-wrap:wrap;gap:10px}
+.store-badge{display:flex;align-items:center;gap:10px;min-width:145px;padding:7px 12px;background:#2b1739;color:white;border-radius:10px;border:1px solid #9882a7}
+.store-badge>span:first-child{font-size:23px;line-height:1.2}
+.store-badge>span:last-child{display:flex;flex-direction:column;line-height:1.08}
+.store-badge small{font-size:8px;letter-spacing:.045em}
+.store-badge strong{font-size:15px;letter-spacing:-.025em}
+.store-badge.not-available{opacity:.75;cursor:not-allowed}
+.store-badge .play-triangle{color:#d2b3ee}
+.nav-signin{font-weight:850;color:#6a0dad!important}
+.sign-in-heading{padding:36px 0}
+.sign-in-heading h1{font-size:clamp(39px,5vw,62px);margin-bottom:8px}
+.login-section{padding:40px 0 65px}
+.login-columns{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:25px;align-items:start}
+.login-card,.login-demo{padding:30px;border-radius:17px;border:1px solid #e4d6ef;background:#fff}
+.login-card h2,.login-demo h2{font-size:30px;margin:5px 0 10px}
+.login-card>p,.login-demo>p{color:#5f516a;line-height:1.65;font-size:15px}
+.login-go{display:inline-flex;margin:13px 0}
+.login-helper{font-size:12px!important;color:#62596e!important}
+.login-card hr{border:none;border-top:1px solid #e6dceb;margin:22px 0}
+.social-provider-soon{display:flex;align-items:center;gap:12px;width:100%;background:#f6f3f9;border:1px solid #d6cbdc;padding:13px 15px;border-radius:10px;color:#53445d;font:inherit;font-weight:750;text-align:left;margin:10px 0;cursor:not-allowed}
+.social-provider-soon strong{font-size:21px}
+.social-provider-soon small{margin-left:auto;font-size:11px;font-weight:750}
+.google-g{color:#5676c3}
+.login-policy{background:#f7efff;border-radius:9px;padding:14px;font-size:13px!important}
+.login-policy a,.policy-content a{text-decoration:underline;text-underline-offset:3px}
+.login-demo{background:#f0e5ff;border-color:#dfc6f1}
+.login-demo .button{margin-top:13px}
+.login-demo-mark{font-size:37px;margin:22px 0 12px}
+.policy-content{padding:45px 0 75px}
+.policy-content .shell{max-width:840px}
+.policy-content h2{font-size:24px;margin:30px 0 8px}
+.policy-content p{font-size:16px;line-height:1.8;color:#5e5067}
+@media(max-width:920px){.site-header .nav nav{gap:8px;font-size:11px}.login-columns{grid-template-columns:1fr}}
+@media(max-width:620px){.home-app-launch{padding:14px}.home-app-button{font-size:13px!important}.store-badge{min-width:132px;padding:7px 9px}.store-badge strong{font-size:13px}.login-card,.login-demo{padding:20px}}
