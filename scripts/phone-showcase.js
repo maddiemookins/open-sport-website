@@ -18,6 +18,16 @@
   window.location.hostname!=='open-sport-website.pages.dev';
  const previewAppOrigin='https://feat-demo-showcase-deep-link.open-sport-app.pages.dev';
  const allowedAppOrigin=previewHost?previewAppOrigin:'https://open-sport-app.pages.dev';
+ const versionBadge=carousel.querySelector('[data-showcase-version]');
+ window.addEventListener('message',(event)=>{
+  if(event.origin!==allowedAppOrigin)return;
+  const fromCarousel=slides.some(slide=>slide.querySelector('iframe')?.contentWindow===event.source);
+  if(!fromCarousel)return;
+  const data=event.data;
+  if(!data||data.type!=='OPEN_SPORT_DEMO_VERSION'||typeof data.version!=='string')return;
+  if(!/^[0-9]+[.][0-9]+[.][0-9]+$/.test(data.version))return;
+  if(versionBadge)versionBadge.textContent='REAL APP · v'+data.version;
+ });
  const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
  let index=0;
  let hovering=false,focused=false,visible=false,swipeStartX=null,lastGesture=0;
