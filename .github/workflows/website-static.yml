@@ -1,0 +1,22 @@
+name: Website static checks
+on:
+  pull_request:
+    paths:
+      - '**.html'
+      - 'styles.css'
+      - 'scripts/**'
+      - '.github/workflows/website-static.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/check-demo-embed.mjs
+      - run: node scripts/check-progress-pages.mjs
