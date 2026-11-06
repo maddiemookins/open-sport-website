@@ -287,7 +287,7 @@ a:focus-visible{outline-color:#8A3FFC}
 .showcase-phone-screen{height:100%;width:100%;overflow:hidden;border-radius:33px;background:#f9f5f2;position:relative}
 .showcase-phone-placeholder{display:grid;align-content:center;justify-items:center;gap:8px;position:absolute;inset:0;background:linear-gradient(160deg,#f6e9ff,#f8f5fc);color:#6a0dad}
 .showcase-phone-placeholder span{font-size:75px}.showcase-phone-placeholder small{font-size:11px;font-weight:850;letter-spacing:.15em}
-.showcase-phone-screen iframe{display:block;position:relative;width:390px;height:722px;border:0;transform:scale(.6154);transform-origin:top left;background:#fff;pointer-events:none;user-select:none}
+.showcase-phone-screen .showcase-snapshot{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;background:#fff;user-select:none}
 .showcase-copy{max-width:450px;margin:0 auto 6px;min-height:93px}
 .showcase-kicker{display:block;font-size:10px;color:#e4c0ff;font-weight:850;letter-spacing:.11em}
 .showcase-copy h2{font-size:clamp(20px,2.4vw,28px);color:#fff;margin:7px 0 5px;line-height:1.15;letter-spacing:-.035em}
