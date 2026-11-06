@@ -20,3 +20,12 @@ assert.ok(css.includes('.demo-frame')&&css.includes('@media(max-width:600px)'),
  'Embedded demo needs mobile-responsive styling');
 assert.ok(/Fictional/i.test(html),'Describe sample player data as fictional');
 console.log('Static website and evergreen demo integration checks passed');
+
+assert.match(html,/id="open-sport-demo-frame"/,'A single canonical app frame exposes a stable ID');
+assert.match(html,/id="embedded-app-version"/,'Website shows the current app build version');
+assert.match(html,/event\.origin!==trustedOrigin/,'Only canonical app origin can report embedded version');
+assert.match(html,/event\.source!==frame\.contentWindow/,'Only embedded app frame can report version');
+assert.match(html,/OPEN_SPORT_DEMO_VERSION/,'Version handshake uses the app release contract');
+assert.ok(!html.includes('APP_VERSION=')&&!html.includes('demo-app-copy'),
+ 'Website must not hard-code the app version or maintain a forked implementation');
+console.log('Embedded app single-source release-parity contract checked');
