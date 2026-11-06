@@ -1,11 +1,12 @@
 import {readFileSync} from 'node:fs';
 import assert from 'node:assert/strict';
 const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
-const pages=['index.html','sports.html','sporting-bodies.html','platform.html','charter.html','demo.html','progress.html','contact.html','login.html'];
+const pages=['index.html','sports.html','sporting-bodies.html','platform.html','charter.html','demo.html','progress.html','contact.html','login.html','features.html'];
 const progress=read('progress.html'), contact=read('contact.html'), styles=read('styles.css');
 for(const page of pages){
  const html=read(page);
  assert.match(html,/<main id="main">/,'landmark on '+page);
+ assert.match(html,/href="features.html"/,"feature matrix navigation on "+page);
  assert.match(html,/href="progress.html"/,'progress navigation on '+page);
  assert.match(html,/href="contact.html"/,'contact navigation on '+page);
  assert.match(html,/href="login.html"/,'login navigation on '+page);
@@ -83,3 +84,21 @@ assert.match(home,/data-showcase-version/,'Homepage identifies version of its lo
 assert.match(home,/APP SCREENSHOTS · v0[.]5[.]6/,'Label screenshot version honestly');
 assert.match(styles,/showcase-snapshot/,'CSS displays screenshot imagery within the phone');
 console.log('Five genuine app screenshots, source traceability, swipe and accessibility checks passed');
+
+const matrix=read('features.html'), matrixJs=read('scripts/feature-matrix.js');
+assert.match(home,/Compare all 43 features/,'Home must promote feature comparison');
+assert.match(progress,/View the feature comparison matrix/,'Progress page links directly to full matrix');
+for(const competitor of ['Spond','SportEasy','Heja'])assert.ok(matrix.includes(competitor),'Comparator '+competitor+' named');
+for(const key of ['matrix-search','matrix-category','matrix-body','matrix-count'])assert.ok(matrix.includes(key),'Feature matrix interactive control '+key);
+assert.match(matrix,/In demo/,'Fictional demo states explained');
+assert.match(matrix,/Not verified/,'Unconfirmed competitor statuses are not invented');
+assert.match(matrix,/https:\/\/help.spond.com/,'Links to an official comparison source');
+assert.match(matrix,/https:\/\/help.heja.io/,'Links to an official comparison source');
+assert.match(matrixJs,/const MATRIX_ROWS=/,'Curated comparison row data retained');
+assert.match(matrixJs,/labels=/,'Status legend mapping retained');
+assert.match(matrixJs,/replaceChildren\(fragment\)/,'Feature filters populate accessible rows');
+const featureRows=matrixJs.match(/\["(?:Getting started|Clubs & people|Fixtures & attendance|Communications|Matches & recognition|Payments & rewards|Safety & governance|Leagues & platform)"/g)||[];
+assert.equal(featureRows.length,43,'All 43 feature rows present');
+assert.match(styles,/\.matrix-table-wrap/,'Comparison table mobile style retained');
+assert.match(styles,/position:sticky/,'Sticky headers on horizontally scrollable table');
+console.log('Full 43-feature public comparison, navigation, sources and accessibility checks passed.');
