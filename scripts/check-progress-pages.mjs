@@ -72,3 +72,11 @@ assert.match(featureJs,/new IntersectionObserver/,'Carousel should avoid offscre
 assert.match(featureJs,/url.origin!=='https:\/\/open-sport-app.pages.dev'/,
  'Only the canonical app is allowed to load into phone iframes');
 console.log('Live phone carousel and five app-feature views verified');
+
+assert.match(featureJs,/window\.location\.hostname\.endsWith\('\.open-sport-website\.pages\.dev'\)/,
+ 'Only website Pages branch previews can use app preview build');
+assert.match(featureJs,/previewHost\?previewAppOrigin:'https:\/\/open-sport-app.pages.dev'/,
+ 'Production website must always run the canonical app');
+assert.match(featureJs,/feat-demo-showcase-deep-link\.open-sport-app\.pages\.dev/,
+ 'Branch showcase pairs with the tested app preview build');
+console.log('Preview-to-preview pairing and production isolation verified');
