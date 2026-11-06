@@ -8,8 +8,22 @@
 <main id="main"><section class="charter-heading"><div class="shell"><p class="eyebrow">OPEN SPORT / BUILDING IN THE OPEN</p>
 <h1>Where we are.<br><em>Where we're going.</em></h1>
 <p class="charter-lead">A transparent view of the work behind our grassroots sport platform and proposed Foundation.</p>
-<p class="status-asof">Last reviewed: <time datetime="2026-11-06">6 November 2026</time>. Status is a curated snapshot, not a live GitHub feed.</p>
-<div class="actions"><a class="button primary" href="demo.html">Explore the fictional demo →</a><a class="button outline" href="#roadmaps">Explore the roadmaps ↓</a></div></div></section>
+<p class="status-asof">Last reviewed: <time datetime="2026-11-06">6 November 2026</time>. We review this roadmap against GitHub and update it when a feature changes status.</p>
+<div class="actions"><a class="button primary" href="demo.html">Explore the fictional demo →</a><a class="button outline" href="#product-roadmap">Explore the product roadmap ↓</a></div></div></section>
+<section class="section roadmap-section" id="product-roadmap"><div class="shell">
+<p class="kicker">PRODUCT / PROPOSED SEQUENCE</p><h2>Open Sport product roadmap</h2>
+<p class="progress-explainer">From a hockey demo to a platform for grassroots team sport. The stages show the proposed order. Delivery dates will be agreed as we learn from the pilot.</p>
+<div class="roadmap-columns" aria-label="Product roadmap stages">
+<article><span class="roadmap-tag">01 / Available to try</span><h3>Hockey demo</h3><p>Explore fixtures and the calendar, respond to availability and try Player of the Match voting with fictional data.</p><p><a class="inline-link" href="demo.html">Try the demo →</a></p></article>
+<article><span class="roadmap-tag">02 / In review</span><h3>Demo 1.0</h3><p>Guided tour, offline demo loading, local profile photos and versioned release notes. The Foundation’s phone showcase is also in review.</p><p><a class="inline-link" href="https://github.com/maddiemookins/open-sport-platform/pull/38">Release candidate ↗</a></p></article>
+<article><span class="roadmap-tag">03 / Planned</span><h3>Adult club pilot</h3><p>Verify real sign-in and club setup. Run fixtures, availability, squads, teas, fee tracking, moderated chat and post-match voting with a pilot club.</p><p><a class="inline-link" href="https://github.com/maddiemookins/open-sport-platform/issues/19">Club onboarding checks ↗</a></p></article>
+<article><span class="roadmap-tag">04 / Core in review</span><h3>Leagues and more sports</h3><p>Build on the seven-sport competition core with verified results, scheduling, officials and published standings. Explore pick-up games and tournaments.</p><p><a class="inline-link" href="https://github.com/maddiemookins/open-sport-platform/pull/32">Competition core ↗</a></p></article>
+<article><span class="roadmap-tag">05 / Planned</span><h3>Club community</h3><p>Add supporter access, committee tools, AGM voting, insurance renewals and recognition for volunteers.</p></article>
+<article><span class="roadmap-tag">06 / Safeguarding review</span><h3>Youth and schools</h3><p>Plan guardian-managed under-16 access with nickname-only profiles, no profile photos and no direct messaging between children.</p></article>
+</div>
+<p class="progress-explainer"><strong>£0 Open Sport player subscription.</strong> Clubs set and collect their own fees. Our long-term goal is one million people playing amateur sport every week.</p>
+<p class="progress-explainer"><a class="inline-link" href="https://github.com/maddiemookins/open-sport/blob/main/requirements/PRODUCT-REQUIREMENTS.md">Product requirements ↗</a> · <a class="inline-link" href="https://github.com/maddiemookins/open-sport-platform/issues">Delivery backlog ↗</a></p>
+</div></section>
 <section class="section progress-board"><div class="shell"><p class="kicker">MVP / CURRENT CAPABILITY</p><h2>What we've built</h2>
 <p class="progress-explainer">“Demo implemented” means the experience is available with fictional or device-local information. It does not imply a real club can use that feature in production. Live functionality requires additional security, persistence and release testing.</p>
 <div class="progress-table-wrap" role="region" aria-label="Open Sport development status" tabindex="0"><table class="progress-table"><caption>Open Sport development status as of 6 November 2026</caption>
@@ -28,15 +42,18 @@
 <tr><th scope="row">Authentication</th><td><span class="status-badge testing">Testing</span></td><td>End-to-end live provider validation and access gates still require acceptance.</td></tr>
 <tr><th scope="row">Real club and team persistence</th><td><span class="status-badge testing">Testing</span></td><td>Persistent, authenticated API acceptance is outstanding.</td></tr>
 <tr><th scope="row">Automated browser testing</th><td><span class="status-badge demo">CI passing</span></td><td>The latest inspected onboarding-branch unit, build and mobile/desktop browser workflow passed on 6 November 2026. Future changes still require testing.</td></tr>
+<tr><th scope="row">Player of the Match voting</th><td><span class="status-badge demo">Demo implemented</span></td><td>Vote using fictional data. Real voting requires server-side eligibility, private ballots and duplicate prevention.</td></tr>
+<tr><th scope="row">Match-fee tracking</th><td><span class="status-badge testing">Prototype</span></td><td>Track example charges and payments. Real club use needs a shared, audited register with treasurer confirmation.</td></tr>
+<tr><th scope="row">Guided demo and offline loading</th><td><span class="status-badge testing">In review</span></td><td>The release candidate includes a guided tour and offline demo loading. Offline sync for real clubs is planned.</td></tr>
+<tr><th scope="row">Secure profile photo uploads</th><td><span class="status-badge testing">Planned</span></td><td>The draft demo photo picker stores images on the device. Shared uploads and visibility controls are still to be delivered.</td></tr>
 </tbody></table></div>
-<p class="progress-explainer">The progress page is updated when changes are reviewed. Detailed engineering records are maintained separately. Public releases and security-sensitive capabilities require explicit approval.</p>
+<p class="progress-explainer">Public availability is verified against the deployed demo. A feature is ready for real clubs after it passes the relevant pilot checks.</p>
 </div></section>
-<section class="section roadmap-section" id="roadmaps"><div class="shell"><p class="kicker">NEXT / THREE CONNECTED ROADMAPS</p><h2>Making progress visible</h2>
+<section class="section roadmap-section" id="roadmaps"><div class="shell"><p class="kicker">NEXT / ENGINEERING AND FOUNDATION</p><h2>Making progress visible</h2>
 <p class="progress-explainer">These are working themes. Detailed milestones, owners, budgets and dates will be agreed as the Foundation develops. Items below are proposals, not delivery commitments.</p>
 <div class="roadmap-columns">
-<article><span class="roadmap-tag">01 / PRODUCT</span><h3>Full Open Sport roadmap</h3><p>Make the player and volunteer experience useful throughout the season.</p><ul><li>Complete the evergreen guided demo.</li><li>Real club onboarding, fixtures, squads and messaging.</li><li>Find nearby clubs and plan away journeys.</li><li>Inclusive registration and team discovery.</li></ul><p class="roadmap-state">Detailed roadmap: to be defined</p></article>
-<article><span class="roadmap-tag">02 / ENGINEERING</span><h3>Technology roadmap</h3><p>Reliable, low-maintenance infrastructure for sport in the real world.</p><ul><li>Restore green CI and end-to-end acceptance.</li><li>Offline-first PWA and safe synchronisation.</li><li>Assess Android and iPhone app-store distribution.</li><li>OpenStreetMap integration, address quality and privacy.</li></ul><p class="roadmap-state">Detailed roadmap: to be defined</p></article>
-<article><span class="roadmap-tag">03 / ORGANISATION</span><h3>OSF roadmap</h3><p>Establish a player-owned, volunteer-led sporting movement.</p><ul><li>Founding charter and democratic governance.</li><li>Contact, feedback and volunteer onboarding.</li><li>Pilot clubs and local partnerships.</li><li>Funding, safeguarding and responsible growth.</li></ul><p class="roadmap-state">Detailed roadmap: to be defined</p></article>
+<article><span class="roadmap-tag">01 / ENGINEERING</span><h3>Technology roadmap</h3><p>Reliable, low-maintenance infrastructure for sport in the real world.</p><ul><li>Restore green CI and end-to-end acceptance.</li><li>Offline-first PWA and safe synchronisation.</li><li>Assess Android and iPhone app-store distribution.</li><li>OpenStreetMap integration, address quality and privacy.</li></ul><p class="roadmap-state">Detailed roadmap: to be defined</p></article>
+<article><span class="roadmap-tag">02 / ORGANISATION</span><h3>OSF roadmap</h3><p>Establish a player-owned, volunteer-led sporting movement.</p><ul><li>Founding charter and democratic governance.</li><li>Contact, feedback and volunteer onboarding.</li><li>Pilot clubs and local partnerships.</li><li>Funding, safeguarding and responsible growth.</li></ul><p class="roadmap-state">Detailed roadmap: to be defined</p></article>
 </div></div></section>
 <section class="section join"><div class="shell"><p class="kicker pale">HELP SHAPE WHAT COMES NEXT</p><h2>Built with the people<br>who play.</h2><p>See the app in action, read the draft charter or find out how we'll welcome feedback and volunteers.</p>
 <div class="actions"><a class="button primary" href="demo.html">Try the demo →</a><a class="button outline" href="contact.html">Contact and feedback plans →</a></div></div></section></main>
