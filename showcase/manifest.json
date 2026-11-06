@@ -1,0 +1,16 @@
+{
+  "version": "0.5.6",
+  "source_repository": "maddiemookins/open-sport-platform",
+  "source_commit": "272240676272e43410f96069dc86dc49da5be12f",
+  "source_ci_run": 42294121491,
+  "generated_at": "2026-11-06",
+  "capture_method": "Playwright Chromium screenshot of locally built fictional Open Sport app, 390 x 748 mobile viewport, JPEG",
+  "screens": [
+    "home",
+    "fixtures",
+    "calendar",
+    "team",
+    "profile"
+  ],
+  "fictional_data_only": true
+}
