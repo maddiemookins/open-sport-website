@@ -63,3 +63,26 @@ a:focus-visible{outline-color:#8A3FFC}
 .roadmap-note{font-size:14px;line-height:1.65;color:#655675;margin:25px 0 0}
 @media(max-width:1050px){.capability-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.capability-grid{grid-template-columns:1fr}.capability-grid article{padding:22px}}
+
+/* Foundation multi-page navigation and long-form charter */
+.nav nav a[aria-current="page"]{color:var(--purple);text-decoration:underline;text-decoration-color:#9b61c7;text-underline-offset:7px;text-decoration-thickness:2px}
+.nav nav a.nav-join[aria-current="page"]{color:#fff}
+.charter-heading{padding:90px 0 78px;background:linear-gradient(112deg,#fbf8ff,#f2e5ff)}
+.charter-heading h1{font-family:"Poppins",Inter,system-ui,sans-serif;font-size:clamp(44px,6vw,82px);line-height:1.09;letter-spacing:-.055em;margin:18px 0 24px;max-width:920px}
+.charter-heading h1 em{font-style:normal;color:var(--purple)}
+.charter-heading p:not(.eyebrow){max-width:800px;font-size:18px;line-height:1.7}
+.charter-heading .charter-lead{font-size:clamp(20px,2.5vw,27px)!important;color:var(--plum)}
+.charter-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:70px;padding-top:72px;padding-bottom:105px}
+.charter-toc{position:sticky;top:24px;align-self:start;display:flex;flex-direction:column;gap:13px;padding:24px;background:#f2e5ff;border-radius:12px}
+.charter-toc strong{color:var(--plum);margin-bottom:5px}
+.charter-toc a{font-size:14px;line-height:1.4;color:#513b63}
+.charter-toc a:hover,.inline-link{color:var(--purple);text-decoration:underline;text-underline-offset:3px}
+.charter-article{max-width:790px;font-size:18px;line-height:1.8}
+.charter-article>p:first-child{font-size:22px;line-height:1.65}
+.charter-article section{padding-top:28px;margin-top:24px;border-top:1px solid #e8ddef;scroll-margin-top:20px}
+.charter-article h2{font-size:clamp(30px,3.8vw,43px);line-height:1.15;margin:20px 0}
+.charter-article p{margin:0 0 20px}
+.charter-capabilities{padding-left:25px;margin:18px 0 28px}
+.charter-capabilities li{margin:0 0 15px;padding-left:4px}
+@media(max-width:900px){.charter-layout{grid-template-columns:1fr;gap:30px;padding-top:40px}.charter-toc{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.charter-toc strong{grid-column:1/-1}.charter-heading{padding:60px 0}}
+@media(max-width:600px){.charter-toc{grid-template-columns:1fr}.charter-article{font-size:16px}.charter-heading p:not(.eyebrow){font-size:16px}.charter-article>p:first-child{font-size:19px}}
