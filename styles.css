@@ -271,3 +271,35 @@ a:focus-visible{outline-color:#8A3FFC}
 .policy-content p{font-size:16px;line-height:1.8;color:#5e5067}
 @media(max-width:920px){.site-header .nav nav{gap:8px;font-size:11px}.login-columns{grid-template-columns:1fr}}
 @media(max-width:620px){.home-app-launch{padding:14px}.home-app-button{font-size:13px!important}.store-badge{min-width:132px;padding:7px 9px}.store-badge strong{font-size:13px}.login-card,.login-demo{padding:20px}}
+
+
+/* Homepage: a real app build inside a device-shaped carousel, never a forked mockup. */
+.hero-phone-showcase{position:relative;isolation:isolate;overflow:hidden;border-radius:27px;background:linear-gradient(155deg,#281340,#582184 63%,#8231b1);color:white;box-shadow:0 22px 48px #35114820;min-width:0}
+.showcase-photo-backdrop{position:absolute;inset:0;z-index:-1;opacity:.28;background:linear-gradient(175deg,#321149e6,#53207aba),url("https://images.unsplash.com/photo-1554539484-e4fab56d4a5c?auto=format&fit=crop&w=900&q=76") center/cover}
+.showcase-heading{display:flex;justify-content:center;align-items:center;gap:9px;padding:18px 18px 9px;letter-spacing:.11em;font-size:10px;font-weight:850}
+.showcase-label{color:#f8eaff}.showcase-live{color:#ebd5ff}
+.showcase-label-dot{width:6px;height:6px;border-radius:50%;background:#7becb0;box-shadow:0 0 0 3px #7becb02b}
+.showcase-window{overflow:hidden;min-width:0;touch-action:pan-y}
+.showcase-track{display:flex;will-change:transform;transition:transform 560ms cubic-bezier(.22,.7,.2,1);min-width:0}
+.showcase-slide{flex:0 0 100%;min-width:0;text-align:center;padding:0 19px 5px}
+.showcase-phone{position:relative;width:260px;height:468px;margin:0 auto 13px;padding:10px 9px;border:2px solid #2a2635;border-radius:42px;background:#18121e;box-shadow:11px 17px 27px #1b092b79, inset 2px 2px 2px #9788a4}
+.showcase-phone:before{content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);width:76px;height:19px;background:#110c16;border-radius:20px;z-index:2;box-shadow:0 0 0 2px #2c2330}
+.showcase-phone-screen{height:100%;width:100%;overflow:hidden;border-radius:33px;background:#f9f5f2;position:relative}
+.showcase-phone-placeholder{display:grid;align-content:center;justify-items:center;gap:8px;position:absolute;inset:0;background:linear-gradient(160deg,#f6e9ff,#f8f5fc);color:#6a0dad}
+.showcase-phone-placeholder span{font-size:75px}.showcase-phone-placeholder small{font-size:11px;font-weight:850;letter-spacing:.15em}
+.showcase-phone-screen iframe{display:block;position:relative;width:390px;height:722px;border:0;transform:scale(.6154);transform-origin:top left;background:#fff;pointer-events:none;user-select:none}
+.showcase-copy{max-width:450px;margin:0 auto 6px;min-height:93px}
+.showcase-kicker{display:block;font-size:10px;color:#e4c0ff;font-weight:850;letter-spacing:.11em}
+.showcase-copy h2{font-size:clamp(20px,2.4vw,28px);color:#fff;margin:7px 0 5px;line-height:1.15;letter-spacing:-.035em}
+.showcase-copy p{font-size:12px;color:#f1e4f8;line-height:1.5;margin:0 auto;max-width:365px}
+.showcase-controls{display:flex;justify-content:center;align-items:center;gap:17px;padding:9px 14px 3px}
+.showcase-dots{display:flex;gap:8px}
+.showcase-dots button{width:10px;height:10px;padding:0;border:1px solid #d8b2ef;border-radius:50%;background:#ffffff44;cursor:pointer}
+.showcase-dots button[aria-pressed="true"]{background:#fff;border-color:white;transform:scale(1.3)}
+.showcase-arrow{display:grid;place-items:center;width:34px;height:34px;border:1px solid #d8b2ef;border-radius:50%;font-size:25px;font-weight:450;background:#ffffff21;color:white;cursor:pointer}
+.showcase-arrow:hover,.showcase-arrow:focus-visible{background:#ffffff45}
+.showcase-controls button:focus-visible{outline:3px solid #ffd875;outline-offset:3px}
+.showcase-footnote{margin:0;padding:5px 16px 17px;text-align:center;color:#e9d4f1;font-size:11px}
+.showcase-footnote a{text-decoration:underline;text-underline-offset:3px;font-weight:750}
+@media(max-width:720px){.hero-phone-showcase{max-width:530px;margin-inline:auto;width:100%}.showcase-slide{padding-inline:12px}}
+@media(prefers-reduced-motion:reduce){.showcase-track{transition:none}}
