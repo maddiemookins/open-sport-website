@@ -1,13 +1,14 @@
 import {readFileSync} from 'node:fs';
 import assert from 'node:assert/strict';
 const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
-const pages=['index.html','sports.html','sporting-bodies.html','platform.html','charter.html','demo.html','progress.html','contact.html'];
+const pages=['index.html','sports.html','sporting-bodies.html','platform.html','charter.html','demo.html','progress.html','contact.html','login.html'];
 const progress=read('progress.html'), contact=read('contact.html'), styles=read('styles.css');
 for(const page of pages){
  const html=read(page);
  assert.match(html,/<main id="main">/,'landmark on '+page);
  assert.match(html,/href="progress.html"/,'progress navigation on '+page);
  assert.match(html,/href="contact.html"/,'contact navigation on '+page);
+ assert.match(html,/href="login.html"/,'login navigation on '+page);
  assert.match(html,/href="sports.html"/,'sport navigation on '+page);
  assert.match(html,/href="sporting-bodies.html"/,'sporting-body navigation on '+page);
  assert.match(html,/<nav aria-label="Main navigation">/,'navigation on '+page);
@@ -41,3 +42,16 @@ for(const concept of ['promotion/relegation','forfeits','appeals','audit trail',
  assert.ok(bodies.toLowerCase().includes(concept.toLowerCase()),concept);
 }
 console.log('Photo-led multisport and league navigation checks passed.');
+
+const landing=read('index.html'),login=read('login.html'),terms=read('terms.html'),privacy=read('privacy.html');
+assert.match(landing,/home-app-button/,'First page visibly launches the app');
+assert.match(landing,/href="demo.html">🏑 OPEN THE APP DEMO/);
+assert.match(landing,/COMING SOON ON THE/,'Apple Store marked coming soon');
+assert.match(landing,/COMING SOON ON/,'Google Play marked coming soon');
+assert.match(landing,/App Store/);assert.match(landing,/Google Play/);
+assert.match(login,/https:\/\/open-sport-app.pages.dev\/\?view=account/,'Login routes to canonical app');
+assert.match(login,/disabled aria-label="Continue with Google/,'Unconfigured Google sign-in is disabled');
+assert.match(login,/href="terms.html"/);assert.match(login,/href="privacy.html"/);
+assert.match(terms,/NOT IN EFFECT/);assert.match(privacy,/NOT IN EFFECT/);
+assert.doesNotMatch(login,/<form\b/,'Website cannot intercept real login credentials');
+console.log('App launch, store coming-soon and safe sign-in gateway checks passed');
