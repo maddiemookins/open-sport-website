@@ -80,3 +80,10 @@ assert.match(featureJs,/previewHost\?previewAppOrigin:'https:\/\/open-sport-app.
 assert.match(featureJs,/feat-demo-showcase-deep-link\.open-sport-app\.pages\.dev/,
  'Branch showcase pairs with the tested app preview build');
 console.log('Preview-to-preview pairing and production isolation verified');
+
+assert.match(home,/data-showcase-version/,'Showcase version badge derives from real embedded app');
+assert.match(featureJs,/event.origin!==allowedAppOrigin/,'Reject messages from unrelated origins');
+assert.match(featureJs,/event.source/,'Verify message belongs to one embedded phone view');
+assert.match(featureJs,/OPEN_SPORT_DEMO_VERSION/,'Version contract uses same app event as demo page');
+assert.match(featureJs,/versionBadge.textContent='REAL APP/,'Report the actual embedded app version');
+console.log('Homepage carousel app-version handshake verified');
