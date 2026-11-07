@@ -57,7 +57,7 @@ function render(){
   }
   const tr=document.createElement('tr');tr.className='matrix-feature';
   const name=document.createElement('th');name.scope='row';name.textContent=item[1];tr.append(name);
-  for(const value of item.slice(2)){const cell=document.createElement('td');cell.append(mark(value));tr.append(cell);}
+  for(const [index,value] of item.slice(2).entries()){const cell=document.createElement('td');cell.dataset.label=['Open Sport','Spond','SportEasy','Heja'][index];cell.setAttribute('aria-label',cell.dataset.label+': '+(labels[value]||labels.unknown)[1]);cell.append(mark(value));tr.append(cell);}
   fragment.append(tr);
  }
  table.replaceChildren(fragment);count.textContent=visible.length+' of '+MATRIX_ROWS.length+' features shown';
